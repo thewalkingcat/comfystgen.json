@@ -1,0 +1,192 @@
+{
+  "input": {
+    "workflow": {
+      "4": {
+        "inputs": {
+          "ckpt_name": "JANKUTrainedNoobaiRouwei_v60.safetensors"
+        },
+        "class_type": "CheckpointLoaderSimple",
+        "_meta": {
+          "title": "Load Checkpoint - BASE"
+        }
+      },
+      "5": {
+        "inputs": {
+          "value": 1024
+        },
+        "class_type": "EmptyLatentImage",
+        "_meta": {
+          "title": "EmptyLatentImage"
+        }
+      },
+      "6": {
+        "inputs": {
+          "text": [
+            "51",
+            0
+          ],
+          "clip": [
+            "4",
+            1
+          ]
+        },
+        "class_type": "CLIPTextEncode",
+        "_meta": {
+          "title": "CLIPTextEncode"
+        }
+      },
+      "7": {
+        "inputs": {
+          "text": [
+            "50",
+            0
+          ],
+          "clip": [
+            "4",
+            1
+          ]
+        },
+        "class_type": "CLIPTextEncode",
+        "_meta": {
+          "title": "CLIPTextEncode"
+        }
+      },
+      "10": {
+        "inputs": {
+          "text": "enable",
+          "model": [
+            "4",
+            0
+          ],
+          "positive": [
+            "6",
+            0
+          ],
+          "negative": [
+            "7",
+            0
+          ],
+          "latent_image": [
+            "5",
+            0
+          ],
+          "steps": [
+            "45",
+            0
+          ],
+          "end_at_step": [
+            "47",
+            0
+          ]
+        },
+        "class_type": "KSamplerAdvanced",
+        "_meta": {
+          "title": "KSampler (Advanced) - BASE"
+        }
+      },
+      "11": {
+        "inputs": {
+          "text": "disable",
+          "model": [
+            "12",
+            0
+          ],
+          "positive": [
+            "15",
+            0
+          ],
+          "negative": [
+            "16",
+            0
+          ],
+          "latent_image": [
+            "10",
+            0
+          ],
+          "steps": [
+            "45",
+            0
+          ],
+          "start_at_step": [
+            "47",
+            0
+          ]
+        },
+        "class_type": "KSamplerAdvanced",
+        "_meta": {
+          "title": "KSampler (Advanced) - REFINER"
+        }
+      },
+      "12": {
+        "inputs": {
+          "ckpt_name": "sd_xl_refiner_1.0.safetensors"
+        },
+        "class_type": "CheckpointLoaderSimple",
+        "_meta": {
+          "title": "Load Checkpoint - REFINER"
+        }
+      },
+      "15": {
+        "inputs": {
+          "text": [
+            "51",
+            0
+          ],
+          "clip": [
+            "12",
+            1
+          ]
+        },
+        "class_type": "CLIPTextEncode",
+        "_meta": {
+          "title": "CLIPTextEncode"
+        }
+      },
+      "16": {
+        "inputs": {
+          "text": [
+            "50",
+            0
+          ],
+          "clip": [
+            "12",
+            1
+          ]
+        },
+        "class_type": "CLIPTextEncode",
+        "_meta": {
+          "title": "CLIPTextEncode"
+        }
+      },
+      "17": {
+        "inputs": {
+          "samples": [
+            "11",
+            0
+          ],
+          "vae": [
+            "12",
+            2
+          ]
+        },
+        "class_type": "VAEDecode",
+        "_meta": {
+          "title": "VAEDecode"
+        }
+      },
+      "19": {
+        "inputs": {
+          "filename_prefix": "ComfyUI",
+          "images": [
+            "17",
+            0
+          ]
+        },
+        "class_type": "SaveImage",
+        "_meta": {
+          "title": "SaveImage"
+        }
+      }
+    }
+  }
+}
